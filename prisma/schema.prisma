@@ -14,6 +14,7 @@ model MenuItem {
   category    String
   available   Boolean  @default(true)
   emoji       String?
+  image       String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -30,5 +31,50 @@ model SiteSettings {
   id        String   @id @default(cuid())
   key       String   @unique
   value     String
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  orderNumber   Int         @unique @default(autoincrement())
+  paymentMethod String
+  status        String      @default("new")
+  total         Float
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  items         OrderItem[]
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  name      String
+  category  String
+  size      String
+  sweet     String?
+  image     String
+  price     Float
+  quantity  Int     @default(1)
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model StockItem {
+  id        String   @id @default(cuid())
+  name      String
+  category  String
+  quantity  Float
+  unit      String
+  lowAt     Float    @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Expense {
+  id        String   @id @default(cuid())
+  title     String
+  category  String
+  amount    Float
+  note      String?
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

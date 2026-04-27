@@ -18,6 +18,16 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   const body = await req.json()
-  const item = await prisma.menuItem.create({ data: body })
+  const item = await prisma.menuItem.create({
+    data: {
+      name: body.name,
+      description: body.description,
+      price: Number(body.price),
+      category: body.category,
+      image: body.image || null,
+      emoji: body.emoji || null,
+      available: body.available ?? true,
+    },
+  })
   return NextResponse.json(item, { status: 201 })
 }

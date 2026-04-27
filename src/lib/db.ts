@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { neonConfig, Pool } from '@neondatabase/serverless'
+import { neonConfig } from '@neondatabase/serverless'
 import { PrismaNeon } from '@prisma/adapter-neon'
 import ws from 'ws'
 
@@ -19,8 +19,7 @@ function createPrismaClient() {
     )
   }
 
-  const pool = new Pool({ connectionString: url })
-  const adapter = new PrismaNeon(pool)
+  const adapter = new PrismaNeon({ connectionString: url })
   return new PrismaClient({ adapter })
 }
 

@@ -16,8 +16,6 @@
 
 html { scroll-behavior: smooth; }
 
-body { cursor: none; }
-
 .font-playfair { font-family: var(--font-playfair); }
 .font-jost     { font-family: var(--font-jost); }
 
