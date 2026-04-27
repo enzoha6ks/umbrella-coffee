@@ -20,9 +20,9 @@ export async function GET() {
     }),
   ])
 
-  const salesTotal = orders.reduce((sum, order) => sum + order.total, 0)
-  const expensesTotal = expenses.reduce((sum, expense) => sum + expense.amount, 0)
-  const lowStock = stock.filter(item => item.quantity <= item.lowAt)
+  const salesTotal = orders.reduce((sum: number, order: { total: number }) => sum + order.total, 0)
+  const expensesTotal = expenses.reduce((sum: number, expense: { amount: number }) => sum + expense.amount, 0)
+  const lowStock = stock.filter((item: { quantity: number; lowAt: number }) => item.quantity <= item.lowAt)
 
   return NextResponse.json({
     orders,
