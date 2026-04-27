@@ -129,10 +129,6 @@ Staff can:
 
 ## Notes
 
-Uploaded menu images are saved to:
-
-```txt
-public/images/uploads
-```
+Uploaded menu images are stored as data URLs in the database so they work on serverless hosting where the filesystem is read-only.
 
 Customer cart data is kept in browser local storage until checkout. Once the customer confirms KNET or cash payment, the order is recorded in the database for staff.
