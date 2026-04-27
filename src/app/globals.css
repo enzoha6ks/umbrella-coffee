@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --font-playfair: 'Playfair Display', serif;
+  --font-jost: 'Jost', sans-serif;
+  --gold: #C9A84C;
+  --gold2: #E8C96A;
+  --champagne: #F5E6C8;
+  --coffee: #6B3F2A;
+  --latte: #A67550;
+  --black: #090909;
+  --richblack: #111010;
+  --border: rgba(201, 168, 76, 0.18);
+  --dim: rgba(201, 168, 76, 0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body { cursor: none; }
+
+.font-playfair { font-family: var(--font-playfair); }
+.font-jost     { font-family: var(--font-jost); }
+
+.gold-gradient {
+  background: linear-gradient(135deg, #C9A84C, #E8C96A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-border-top::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+}
+
+.gold-border-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+}
+
+@keyframes galleryScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes scrollDrop {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.4); }
+}
+
+.gallery-track {
+  animation: galleryScroll 28s linear infinite;
+}
+.gallery-track:hover {
+  animation-play-state: paused;
+}
+
+.scroll-bar {
+  animation: scrollDrop 2s infinite ease-in-out;
+}
