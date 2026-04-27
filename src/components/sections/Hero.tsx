@@ -81,9 +81,9 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, delay: 0.2, ease: 'easeOut' }}
-          className="absolute inset-0 opacity-55 lg:relative lg:opacity-100"
+          className="absolute inset-0 opacity-75 lg:relative lg:opacity-100"
         >
-          <div className="absolute inset-0 z-10 pointer-events-none" style={{background:'linear-gradient(to bottom, rgba(9,9,9,.88) 0%, rgba(9,9,9,.12) 42%, rgba(9,9,9,.72) 100%), linear-gradient(to right, rgba(9,9,9,.86) 0%, rgba(9,9,9,.12) 38%, transparent 100%)'}}/>
+          <div className="absolute inset-0 z-10 pointer-events-none" style={{background:'linear-gradient(to bottom, rgba(9,9,9,.72) 0%, rgba(9,9,9,.06) 44%, rgba(9,9,9,.52) 100%), linear-gradient(to right, rgba(9,9,9,.76) 0%, rgba(9,9,9,.08) 34%, transparent 78%)'}}/>
           <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-0.5">
             <motion.div
               tabIndex={0}
