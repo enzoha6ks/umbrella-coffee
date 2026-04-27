@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Umbrella Coffee
+
+Umbrella Coffee is a responsive cafe website and lightweight operations system built with Next.js, React, Prisma, Neon Postgres, Tailwind CSS, and Framer Motion.
+
+The public site lets customers browse the cafe, select drinks or sweets, choose cup sizes, add optional sweet items, and send orders to staff. The staff and admin portals handle live orders, stock, expenses, and menu management.
+
+## Features
+
+- Responsive public cafe website
+- Animated hero, about, gallery, and menu sections
+- Mobile-first ordering flow
+- Cart and checkout flow
+- Counter payment options: KNET/NFC machine or cash
+- Database-backed order recording
+- Staff portal for incoming orders and stock
+- Admin portal for sales, canceled orders, stock, expenses, and menu products
+- Product image uploads for menu items
+- Prisma models for orders, stock, expenses, menu items, gallery, and settings
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- Tailwind CSS 4
+- Framer Motion
+- Prisma 7
+- Neon Postgres
+
+## Routes
+
+- `/` - public customer website
+- `/checkout` - cart checkout and payment method selection
+- `/login` - staff/admin login
+- `/staff` - staff dashboard
+- `/admin` - admin dashboard
+
+Demo credentials:
+
+```txt
+Admin: admin / admin
+Staff: staff / staff
+```
+
+## Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+DATABASE_URL="postgresql://..."
+DIRECT_URL="postgresql://..."
+```
+
+Do not commit real database credentials.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Generate the Prisma client:
+
+```bash
+npx prisma generate
+```
+
+Sync the database schema:
+
+```bash
+npx prisma db push
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```txt
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+```bash
+npm run dev      # start development server
+npm run build    # build production app
+npm run start    # start production server
+npm run lint     # run ESLint
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```txt
+prisma/schema.prisma            Prisma database models
+public/images                   Static cafe and product images
+src/app/page.tsx                Public homepage
+src/app/checkout/page.tsx       Customer checkout
+src/app/login/page.tsx          Staff/admin login
+src/app/staff/page.tsx          Staff dashboard
+src/app/admin/page.tsx          Admin dashboard
+src/app/api                     Route handlers for orders, menu, stock, expenses, uploads
+src/components/sections         Public site sections
+src/lib/db.ts                   Prisma client setup
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Admin Workflow
 
-## Deploy on Vercel
+Admins can:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- View sales, expenses, net totals, and recent orders
+- See canceled orders
+- Add stock items
+- Add expenses
+- Add menu products with price, category, description, and uploaded image
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Staff Workflow
+
+Staff can:
+
+- See incoming customer orders
+- Open order details
+- Mark orders as preparing, done, or canceled
+- View and add stock items
+
+## Notes
+
+Uploaded menu images are saved to:
+
+```txt
+public/images/uploads
+```
+
+Customer cart data is kept in browser local storage until checkout. Once the customer confirms KNET or cash payment, the order is recorded in the database for staff.
