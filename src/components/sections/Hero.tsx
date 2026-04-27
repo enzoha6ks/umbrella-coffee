@@ -32,6 +32,7 @@ export default function Hero() {
       <div ref={ringRef} className="fixed hidden md:block w-10 h-10 border border-[#C9A84C] rounded-full pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 opacity-50"/>
       <section id="hero" className="relative min-h-[100svh] overflow-hidden bg-[#090909] md:cursor-none lg:grid lg:grid-cols-2">
         <div className="relative z-10 flex min-h-[100svh] flex-col justify-center px-6 py-28 sm:px-10 md:px-14 lg:py-32">
+          <div className="absolute inset-y-16 left-0 z-[-1] w-[82%] bg-gradient-to-r from-[#090909]/80 via-[#090909]/35 to-transparent sm:w-[70%] lg:hidden"/>
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -81,9 +82,9 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, delay: 0.2, ease: 'easeOut' }}
-          className="absolute inset-0 opacity-75 lg:relative lg:opacity-100"
+          className="absolute inset-0 opacity-90 lg:relative lg:opacity-100"
         >
-          <div className="absolute inset-0 z-10 pointer-events-none" style={{background:'linear-gradient(to bottom, rgba(9,9,9,.72) 0%, rgba(9,9,9,.06) 44%, rgba(9,9,9,.52) 100%), linear-gradient(to right, rgba(9,9,9,.76) 0%, rgba(9,9,9,.08) 34%, transparent 78%)'}}/>
+          <div className="absolute inset-0 z-10 pointer-events-none" style={{background:'linear-gradient(to bottom, rgba(9,9,9,.38) 0%, rgba(9,9,9,0) 46%, rgba(9,9,9,.28) 100%), linear-gradient(to right, rgba(9,9,9,.28) 0%, rgba(9,9,9,.04) 28%, transparent 70%)'}}/>
           <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-0.5">
             <motion.div
               tabIndex={0}
