@@ -6,13 +6,14 @@ import Gallery  from '@/components/sections/Gallery'
 import Location from '@/components/sections/Location'
 import Footer   from '@/components/Footer'
 import { prisma } from '@/lib/db'
+import type { MenuItem } from '@prisma/client'
 
 export default async function Home() {
   const menuItems = await prisma.menuItem.findMany({
     where: { available: true },
     orderBy: { createdAt: 'asc' },
   })
-  const clientMenuItems = menuItems.map(item => ({
+  const clientMenuItems = menuItems.map((item: MenuItem) => ({
     id: item.id,
     name: item.name,
     description: item.description,

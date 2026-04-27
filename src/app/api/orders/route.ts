@@ -27,14 +27,14 @@ export async function GET() {
 export async function POST(req: Request) {
   const body = await req.json() as OrderInput
   const items = body.items ?? []
-  const total = items.reduce((sum, item) => sum + item.price, 0)
+  const total = items.reduce((sum: number, item: OrderItemInput) => sum + item.price, 0)
 
   const order = await prisma.order.create({
     data: {
       paymentMethod: body.paymentMethod,
       total,
       items: {
-        create: items.map(item => ({
+        create: items.map((item: OrderItemInput) => ({
           name: item.name,
           image: item.image,
           category: item.category,
